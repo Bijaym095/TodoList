@@ -44,25 +44,25 @@ const Todo = () => {
 
   return (
     <div>
-      <form className="mb-4" onSubmit={handleSubmit(todoSubmitHandler)}>
+      <form className="mb-8 flex" onSubmit={handleSubmit(todoSubmitHandler)}>
         <input
-          className="form-input rounded-lg"
+          className="w-full form-input rounded-lg"
           {...register("todoInput", { required: true })}
           type="text"
           defaultValue={isEditing ? editingValue : ""}
         />
 
         <button
-          className="bg-red-400 font-medium text-white py-2 px-4 ml-2 rounded-lg hover:bg-red-500 duration-300"
+          className="bg-red-400 inline-block min-w-[84px] font-medium text-white py-2 px-4 ml-2 rounded-lg hover:bg-red-500 duration-300"
           type="submit"
         >
           {isEditing ? "Edit" : "Submit"}
         </button>
       </form>
 
-      <h2 className="font-bold">Tasks</h2>
+      <h2 className="font-bold text-[1.2rem] mb-4">Tasks</h2>
 
-      {todoLists.length === 0 && todoLists.length < 0 ? (
+      {todoLists.length === 0 || todoLists.length < 0 ? (
         <p>No Task Added</p>
       ) : (
         <TodoList

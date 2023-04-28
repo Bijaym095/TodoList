@@ -4,15 +4,15 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 
 const TodoList = ({ lists, onDelete, onEdit, isEditing }) => {
   return (
-    <ul className="space-y-2">
+    <ul className="space-y-4 max-h-[300px] overflow-y-scroll">
       {lists.map((list, index) => (
         <li
-          className="flex justify-between items-center capitalize"
+          className=" py-2 bg-slate-200 flex justify-between items-center capitalize"
           key={index}
         >
           {list}
 
-          <div className="space-x-2">
+          <div className="space-x-4">
             <button
               className="text-blue-400"
               onClick={() => onEdit(list, index)}
