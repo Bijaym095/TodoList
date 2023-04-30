@@ -7,20 +7,25 @@ const todoSlice = createSlice({
   },
   reducers: {
     addTask: (state, action) => {
-      state.lists.push(action.payload);
+      return { ...state, lists: [...state.lists, action.payload] };
     },
 
     deleteTask: (state, action) => {
-      state.lists = state.lists.filter(
-        (list, index) => index !== action.payload
-      );
+      return {
+        ...state,
+        lists: state.lists.filter((list, i) => i !== action.payload),
+      };
     },
 
     editTask: (state, action) => {
       const { editingIndex, editingValue } = action.payload;
-      state.lists = state.lists.map((task, i) =>
-        i === editingIndex ? editingValue : task
-      );
+
+      return {
+        ...state,
+        lists: state.lists.map((task, i) =>
+          i === editingIndex ? editingValue : task
+        ),
+      };
     },
   },
 });
